@@ -1,0 +1,70 @@
+1. convert_grammar
+The difficulty with this problem was getting used to OCaml and realizing that I
+had to return a function. Beyond that, it was fairly straightforward recursing 
+through the grammar structure of hw1 and changing the format. I was getting
+weird function type for a while just because I wasn't used to thinking like an 
+OCaml programmer. The implementation I went with was, to me, the most 
+straightforward, and I don't see any problems with it other than possible 
+inefficiency upon appending lists.
+
+2. parse_prefix
+This one presented much difficulty even in understanding what the function was
+supposed to return, let alone coming up wiht an algorithm to solve it. After
+drawing a sample grammar, labeling the different parts, and eventually (after
+lots of reading & troubleshooting) tracing through an example parse_prefix on 
+a simple grammar, I had some idea of a solution...
+
+From discussion and example parse trees that were done in the textbook reading,
+it was pretty clear I was going to expand derivations from the top down,
+starting with the start symbol (the root of the parse tree)  and substituting 
+using rules until finding a match or exhausting all rules. For this approach, 
+a few functions/tasks would be needed:
+- loop (well this is OCaml, so recurse) through rules from beginning to end
+- check if terminals match with fragment elements, run acceptor on the suffix
+- expand nonterminals that we encounter (again, recursively)
+
+These were the main ideas I initially went in with. At first, I did not 
+recognize exactly how these tasks would be separated between functions/match 
+statements and also what other cases would come up that I would have to deal
+with, so the implementation details came gradually as the written solution 
+became more and more clear. Implementing the ideas in OCaml was also very
+challenging, even if many of the syntactical features were presented at last
+week's discussion.
+
+I already had a pretty good idea of how to build a derivation from the
+previous homework and lectures, so this was not too difficult to see. However,
+the big problem I ran into was understanding how to build prefixes with 
+successively more elements while only retaining the return value of the 
+acceptor on the matched prefix and not all prefixes checked. It took a little
+bit of discussion with friends working on the project as well to gain the
+intuition that solved the problem which was that a matcher of a single element
+could be strung with another one while passing the same acceptor by recursively
+passing the previous acceptor value on each iteration.
+
+The solution has one function (expand_nt) on the outside that iterates 
+through rules, calls a function to check for matches, and builds 
+derivations. match_item checks for matches between rules and grammar and
+(the non-intuitive part) recursively calls itself when finding terminal matches
+while passing the right acceptor value. It calls expand_nt if a nonterminal 
+shows up so the parsing can continue downward.
+
+Difficulties:
+In short, there were very many, and they were related to both understanding
+the problem and using OCaml to solve it. Here are a few.
+- understanding how grammar, alternative list, derivation, fragment relate
+to each other
+- it wasn't entirely clear what the functionalities of matcher/acceptor were
+and thus I had very little idea what I was supposed to return at first
+- how to match prefixes of multiple elements?
+- shared variables between functions... turns out this was pretty easy using
+"let ... in"
+- nesting function calls in OCaml was tricky, although defining local variables
+with function values helped clean it up a bit
+- knowing what parameters to call a function with so that it would give back
+what I wanted. Definitely not as straightforward as in OOP
+
+Weakness:
+Because we're parsing left to right, a nonterminal cannot be substituted by
+a set of symbols that begins with that nonterminal, or else the program 
+infinitely recurses due to left recursion. This point was illustrated by TA 
+Brett during discussion.
