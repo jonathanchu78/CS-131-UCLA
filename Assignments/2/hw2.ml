@@ -33,28 +33,26 @@ let parse ss prod  =
 				| _ -> checkitem accept (d @ [(nt, ruleitem)]) frag
 		)
 
-	(*check what the next item is and handle it*)
+	(*check what the next item is and handle*)
 	and match_item prod = function
 		(*no more rules; return what acceptor returned*)
 		| [] -> (fun accept d frag -> accept d frag)
 		(*item was a terminal symbol ==> check for match*)
-		| (T tm) :: rulesrest ->
-			(fun accept d -> function
-				| [] -> None
-				| fragitem :: fragrest ->
-					let matcher = match_item prod rulesrest in 
-					if fragitem = tm then 
-						(*Found a match! Now check fragrest*)
-						matcher accept d fragrest
-					else None (*terminal didn't match fragitem*)
-			)
+		| (T tm) :: rulesrest -> (fun accept d -> function
+			| [] -> None
+			| fragitem :: fragrest ->
+				let matcher = match_item prod rulesrest in 
+				if fragitem = tm then 
+					(*Found a match! Now the tricky part*)
+					matcher accept d fragrest
+				else None (*terminal didn't match fragitem*)
+		)
 		(*item was a nonterminal ==> feed it back into expand_nt*)
-		| (N nt) :: rulesrest ->
-			(fun accept d frag ->
-				let checkrest = expand_nt prod nt (prod nt)
-				and new_acceptor = match_item prod rulesrest accept
-				in checkrest new_acceptor d frag
-			)
+		| (N nt) :: rulesrest -> (fun accept d frag ->
+			let checkrest = expand_nt prod nt (prod nt)
+			and new_acceptor = match_item prod rulesrest accept
+			in checkrest new_acceptor d frag
+		)
 	in
 	(*start by expanding the start symbol, program will recursively expand the rest*)
 	(* (prod ss) evaluates to the rules corresponding to start symbol*)
