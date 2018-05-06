@@ -1,0 +1,107 @@
+Threads: 1, Swaps: 10000
+Synchronized: Threads average 591.486 ns/transition
+Unsynchronized: Threads average 574.285 ns/transition
+GetNSet: Threads average 1063.08 ns/transition
+BetterSafe: Threads average 924.986 ns/transition
+
+Threads: 1, Swaps: 100000
+Synchronized: Threads average 195.322 ns/transition
+Unsynchronized: Threads average 196.879 ns/transition
+GetNSet: Threads average 244.475 ns/transition
+BetterSafe: Threads average 261.018 ns/transition
+
+Threads: 1, Swaps: 1000000
+Synchronized: Threads average 63.6498 ns/transition
+Unsynchronized: Threads average 51.8124 ns/transition
+GetNSet: Threads average 73.5783 ns/transition
+BetterSafe: Threads average 83.6808 ns/transition
+
+Threads: 2, Swaps: 10000
+Synchronized: Threads average 2252.14 ns/transition
+sum mismatch (15 != 29)
+Unsynchronized: Threads average 2031.78 ns/transition
+sum mismatch (15 != 96)
+GetNSet: Threads average 2149.50 ns/transition
+BetterSafe: Threads average 3436.37 ns/transition
+
+Threads: 2, Swaps: 100000
+Synchronized: Threads average 1156.77 ns/transition
+sum mismatch (15 != 216)
+Unsynchronized: Threads average 934.745 ns/transition
+sum mismatch (15 != 159)
+GetNSet: Threads average 1505.26 ns/transition
+BetterSafe: Threads average 1530.23 ns/transition
+
+Threads: 2, Swaps: 1000000
+Synchronized: Threads average 240.952 ns/transition
+Unsynchronized: FAILED
+GetNSet: FAILED
+BetterSafe: Threads average 771.993 ns/transition
+
+Threads: 6, Swaps: 10000
+Synchronized: Threads average 8008.78 ns/transition
+sum mismatch (15 != 72)
+Unsynchronized: Threads average 5194.00 ns/transition
+sum mismatch (15 != 85)
+GetNSet: Threads average 15115.5 ns/transition
+BetterSafe: Threads average 9941.16 ns/transition
+
+Threads: 6, Swaps: 100000
+Synchronized: Threads average 3481.39 ns/transition
+sum mismatch (15 != 244)
+Unsynchronized: Threads average 1566.10 ns/transition
+sum mismatch (15 != 237)
+GetNSet: Threads average 2446.22 ns/transition
+BetterSafe: Threads average 3966.76 ns/transition
+
+Threads: 6, Swaps: 1000000
+Synchronized: Threads average 2306.44 ns/transition
+Unsynchronized: FAILED
+GetNSet: FAILED
+BetterSafe: Threads average 824.746 ns/transition
+ds: 12, Swaps: 10000
+Synchronized: Threads average 13633.1 ns/transition
+sum mismatch (15 != 170)
+Unsynchronized: Threads average 15006.9 ns/transition
+sum mismatch (15 != 66)
+GetNSet: Threads average 38495.9 ns/transition
+BetterSafe: Threads average 19839.7 ns/transition
+
+Threads: 12, Swaps: 100000
+Synchronized: Threads average 5648.56 ns/transition
+sum mismatch (15 != 265)
+Unsynchronized: Threads average 2761.31 ns/transition
+sum mismatch (15 != 86)
+GetNSet: Threads average 5947.58 ns/transition
+BetterSafe: Threads average 5250.30 ns/transition
+
+Threads: 12, Swaps: 1000000
+Synchronized: Threads average 3501.10 ns/transition
+sum mismatch (15 != 292)
+Unsynchronized: Threads average 2705.66 ns/transition
+GetNSet: FAILED
+BetterSafe: Threads average 1860.85 ns/transition
+
+Threads: 20, Swaps: 10000
+Synchronized: Threads average 25366.5 ns/transition
+sum mismatch (15 != 228)
+Unsynchronized: Threads average 22286.9 ns/transition
+sum mismatch (15 != 72)
+GetNSet: Threads average 54567.3 ns/transition
+BetterSafe: Threads average 41163.8 ns/transition
+
+Threads: 20, Swaps: 100000
+Synchronized: Threads average 9420.52 ns/transition
+sum mismatch (15 != 555)
+Unsynchronized: Threads average 5348.31 ns/transition
+sum mismatch (15 != 192)
+GetNSet: Threads average 9121.32 ns/transition
+BetterSafe: Threads average 8949.67 ns/transition
+
+Threads: 20, Swaps: 1000000
+Synchronized: Threads average 5729.95 ns/transition
+sum mismatch (15 != 303)
+Unsynchronized: Threads average 5491.36 ns/transition
+GetNSet: FAILED
+BetterSafe: Threads average 2706.03 ns/transition
+

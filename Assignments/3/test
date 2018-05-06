@@ -1,0 +1,27 @@
+#/bin/bash
+
+export PATH=/usr/local/cs/bin:$PATH
+
+declare -a classes=("Synchronized" "Unsynchronized" "GetNSet" "BetterSafe")
+declare -a threads=(1 2 6 12 20)
+declare -a swaps=(10000 100000 1000000)
+
+
+echo " " > result.csv
+for j in "${threads[@]}" 
+do
+	for k in "${swaps[@]}"
+	do
+		echo " "
+		echo "Threads:" "$j", "Swaps:" "$k"
+		for i in "${classes[@]}"
+		do
+			OUTPUT="$(timeout 5s java UnsafeMemory "$i" "$j" "$k" 127 1 2 3 4 5)"
+			if [ -z "$OUTPUT" ] 
+			then
+				OUTPUT="FAILED"
+			fi
+			echo "$i": $OUTPUT
+		done
+	done
+done
