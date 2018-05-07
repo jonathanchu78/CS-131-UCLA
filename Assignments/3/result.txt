@@ -59,7 +59,8 @@ Synchronized: Threads average 2306.44 ns/transition
 Unsynchronized: FAILED
 GetNSet: FAILED
 BetterSafe: Threads average 824.746 ns/transition
-ds: 12, Swaps: 10000
+
+Threads: 12, Swaps: 10000
 Synchronized: Threads average 13633.1 ns/transition
 sum mismatch (15 != 170)
 Unsynchronized: Threads average 15006.9 ns/transition
