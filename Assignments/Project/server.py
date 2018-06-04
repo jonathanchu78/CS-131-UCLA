@@ -40,13 +40,13 @@ log_file = ''
 places_url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
 api_key = 'AIzaSyCPqX0rIuz_Bo8aNzAFZRxy-rxCgrPHrBA'
 
-async def writeLog(msg):
-    if msg == None:
-        return
-    try:
-        logFile.write(msg)
-    except:
-        print('error logging: %s' % msg)
+async def writeLog(msg):	
+	if msg == None:
+		return
+	try:
+		logFile.write(msg)
+	except:
+		print('error logging: %s' % msg)
 
 #################################################
 #  	IAMAT
@@ -149,6 +149,7 @@ async def writeResponse(writer, msg):
 		writer.write(msg.encode())
 		print("writing response:\n" + msg)
 		await writer.drain()
+		writer.write_eof()
 	except:
 		print('error writing msg: %s' % msg)
 	return
@@ -168,7 +169,7 @@ async def flood(client_name):
 			print('propagating %s to %s' % (client_name, node))
 			reader, writer = await asyncio.open_connection('127.0.0.1', port, loop=loop)
 			await writeLog('CONNECTED TO ' + node + '\n')
-			await writeLog('PROPAGATING %s TO %s\n at_cmd' % (client_name, node))
+			await writeLog('PROPAGATING %s TO %s:\n%s\n' % (client_name, node, at_cmd))
 			await writeResponse(writer, at_cmd)
 			await writeLog('CLOSED CONNECTION WITH ' + node + '\n\n')
 		except:
@@ -177,8 +178,9 @@ async def flood(client_name):
 
 
 async def at(client_name, server_name, latitude, longitude, time_diff, cmd_time, writer):
-	if client_name in clients and clients[client_name]['cmd_time'] >= cmd_time: 
+	if client_name in clients and float(clients[client_name]['cmd_time']) >= float(cmd_time): 
 		#we've already seen this client on this server or it's not the most up to date
+		await writeLog('RECEIVED REDUNDANT AT COMMAND FOR: ' + client_name + '\n\n')
 		return
 
 	clients[client_name] = {
@@ -244,7 +246,7 @@ def acceptClient(reader, writer):
 	tasks[task] = (reader, writer)
 
 	def close_client(task):
-		logFile.write('CLOSING CLIENT\n')
+		logFile.write('CLOSING CONNECTION\n\n')
 		print('Closing client')
 		del tasks[task]
 		writer.close()
@@ -293,7 +295,8 @@ def main():
 	try:
 		loop.run_forever()
 	except KeyboardInterrupt:
-		print(time.time())
+		print('\n' + server_name +' closed at time:', time.time())
+		logFile.write(server_name + ' closed at time:' + str(time.time()))
 		pass
 
 	#KEYBOARD INTERRUPT IS NOT WORKING!
