@@ -1,0 +1,12 @@
+Goloman
+Serving on ('127.0.0.1', 12549)
+
+RECEIVED AT COMMAND:
+AT kiwi.cs.ucla.edu Wilkes +34.06893 -118.445127 -8103901.279492617 1520023935.918964
+ERROR PROPAGATING kiwi.cs.ucla.edu TO Hands
+
+ERROR PROPAGATING kiwi.cs.ucla.edu TO Holiday
+
+ERROR PROPAGATING kiwi.cs.ucla.edu TO Wilkes
+
+CLOSING CLIENT

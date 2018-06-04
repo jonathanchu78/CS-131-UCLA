@@ -95,9 +95,9 @@ async def iamat(client_name, latlon, cmd_time, actual_time, writer):
 
 	ret_msg = 'AT %s %s %s %s %s' % (server_name, str(time_diff), client_name, latlon, cmd_time)
 	await writeLog('RESPONDING TO IAMAT:\n' + ret_msg + '\n')
+	await flood(client_name)
 	await writeResponse(writer, ret_msg)
 
-	await flood(client_name)
 
 	
 #################################################
@@ -151,7 +151,7 @@ async def writeResponse(writer, msg):
 		await writer.drain()
 	except:
 		print('error writing msg: %s' % msg)
-
+	return
 
 #################################################
 #  	AT
@@ -168,7 +168,7 @@ async def flood(client_name):
 			print('propagating %s to %s' % (client_name, node))
 			reader, writer = await asyncio.open_connection('127.0.0.1', port, loop=loop)
 			await writeLog('CONNECTED TO ' + node + '\n')
-			await writeLog('PROPAGATING %s TO %s\n' % (client_name, node))
+			await writeLog('PROPAGATING %s TO %s\n at_cmd' % (client_name, node))
 			await writeResponse(writer, at_cmd)
 			await writeLog('CLOSED CONNECTION WITH ' + node + '\n\n')
 		except:
@@ -293,6 +293,7 @@ def main():
 	try:
 		loop.run_forever()
 	except KeyboardInterrupt:
+		print(time.time())
 		pass
 
 	#KEYBOARD INTERRUPT IS NOT WORKING!
