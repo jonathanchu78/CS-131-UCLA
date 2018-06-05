@@ -1,0 +1,16 @@
+1. https://docs.python.org/3/library/asyncio.html
+
+2. https://docs.python.org/3/library/asyncio-task.html
+
+3. https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_typing
+
+4. https://developer.mozilla.org/en-US/docs/Glossary/Static_typing
+
+5. http://www.memorymanagement.org/mmref/lang.html
+
+6. https://www.journaldev.com/2856/java-jvm-memory-model-memory-management-in-java
+
+7. https://wiki.python.org/moin/GlobalInterpreterLock
+
+8. https://nodejs.org/en/
+
