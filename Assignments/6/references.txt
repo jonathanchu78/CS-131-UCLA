@@ -1,0 +1,29 @@
+1. https://www.tensorflow.org/
+
+2. https://www.tensorflow.org/extend/language_bindings
+
+3. https://wiki.python.org/moin/Why%20is%20Python%20slower%20than%20the%20xxx%20language
+
+4. https://wiki.python.org/moin/GlobalInterpreterLock
+
+5. https://ocaml.org/
+
+6. https://ocaml.org/learn/description.html
+
+7. http://ocamlgraph.lri.fr/index.en.html
+
+8. https://crystal-lang.org/
+
+9. https://github.com/crystal-lang/crystal
+
+
+
+[1] “TensorFlow.” TensorFlow, www.tensorflow.org/.
+[2] “TensorFlow in Other Languages  |  TensorFlow.” TensorFlow, www.tensorflow.org/extend/language_bindings.
+[3] “Why is Python slower than the xxx language.” ForLoop - Python Wiki, wiki.python.org/moin/Why%20is%20Python%20slower%20than%20the%20xxx%20language.
+[4] “Global Interpreter Lock.” ForLoop - Python Wiki, wiki.python.org/moin/GlobalInterpreterLock.
+[5] “OCaml.” OCaml, ocaml.org/.
+[6] “What Is OCaml?” OCaml, ocaml.org/learn/description.html.
+[7] “OCamlgraph.” Ocamlgraph: an Ocaml Graph Library, ocamlgraph.lri.fr/index.en.html.
+[8] “Crystal.” The Crystal Programming Language, crystal-lang.org/.
+[9]crystal-lang. “Crystal-Lang/Crystal.” GitHub, github.com/crystal-lang/crystal.
